@@ -1,3 +1,21 @@
+<?php
+require_once "CodigoDePontos.php";
+if(!empty($_POST['valor'])) {
+
+    $arb = 0;
+    $valor = 0;
+
+    $valor = (float)$_POST["valor"];
+
+    require_once "CodigoDePontos.php";
+    $data = date("d/m/Y");
+
+    $e = new Empresa("cvds", "sd", "sdc", $data, "vsdc", "csdcs", "csd", "cds");
+    $gerar = new CodigoDePontos($e, $valor, $arb, "2342", "ponto");
+}
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -16,7 +34,7 @@
             <h2 style="background-color: transparent; color: white;">Gerar Código de Pontos</h2>
         </div>
 
-        <form style="margin-top: 60px;" class="container" method="POST" action="codigoGerado.php?metodo=ponto">
+        <form style="margin-top: 60px;" class="container" method="POST" action="pontoValor.php">
             <div class="row justify-content-md-center">
                 <div class="col col-md-6">
                     <input type="text" class="form-control" name="valor" id="valor" placeholder="Digite o valor da compra" required>
@@ -27,6 +45,19 @@
 
             <div class="row justify-content-md-center">
                 <button type="submit" class="btn btn-primary col col-md-4" style="background-color: blueviolet; border-color: blueviolet;">Gerar</button>
+            </div>
+
+            <br>
+
+            <div class="row justify-content-md-center">
+                <div class="col col-md-3" style="background-color: #bdc3c7">
+                <?php
+                    if(!empty($_POST['valor'])) {
+                        echo '<h4>Código gerado: ' . $gerar->getCodigo() . '</h4>';
+                        echo '<h4>Pontos: ' . $gerar->getPontos() . '</h4>';
+                    }
+                ?>
+                </div>
             </div>
             
         </form>
