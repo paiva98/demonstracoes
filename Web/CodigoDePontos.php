@@ -1,7 +1,6 @@
 <?php
 
 include_once "Empresa.php";
-include_once "Strategy.php";
 
 class CodigoDePontos{
 
