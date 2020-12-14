@@ -32,6 +32,7 @@
                         $e = new Empresa("cvds", "sd", "sdc", "dfva", "vsdc", "csdcs", "csd", "cds");
                         $gerar = new CodigoDePontos($e, $valor, $arb, "2342", $metodo);
                         echo '<h3>' . $gerar->getCodigo() . '</h3>';
+                        echo '<h3>Pontos: ' . $gerar->getPontos() . '</h3>';
 
                         $pagina = "";
 
@@ -54,7 +55,7 @@
                     ?>
 
                     <button type="submit" class="btn btn-primary col col-md-4" style="background-color: blueviolet; border-color: blueviolet;">
-                    <a href="<?php echo $pagina ?>" class="badge badge-primary" style="background-color: blueviolet;">Voltar</a>
+                        <a href="<?php echo $pagina ?>" class="badge badge-primary" style="background-color: blueviolet;">Voltar</a>
                     </button>
                 </div>
             </div>
