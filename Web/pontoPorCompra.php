@@ -1,3 +1,17 @@
+<?php
+require_once "CodigoDePontos.php";
+if(isset($_GET['metodo'])) {
+
+    $arb = 0;
+    $valor = 0;
+    $data = date("d/m/Y");
+
+    $e = new Empresa("cvds", "sd", "sdc", $data, "vsdc", "csdcs", "csd", "cds");
+    $gerar = new CodigoDePontos($e, $valor, $arb, "2342", "compra");
+}
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -16,12 +30,25 @@
             <h2 style="background-color: transparent; color: white;">Gerar Código de Pontos</h2>
         </div>
 
-        <form style="margin-top: 60px;" class="container" method="POST" action="codigoGerado.php?metodo=compra">
+        <form style="margin-top: 60px;" class="container" method="POST" action="pontoPorCompra.php?metodo=compra">
             <div class="row justify-content-md-center">
-                <button type="submit" class="btn btn-primary col col-md-4" style="background-color: blueviolet; border-color: blueviolet;">Gerar</button>
+                <button type="submit" class="btn btn-primary col col-md-4" name="button" style="background-color: blueviolet; border-color: blueviolet;">Gerar</button>
             </div>
             
         </form>
+
+        <br>
+        
+        <div class="row justify-content-md-center">
+            <div class="col col-md-3" style="background-color: #bdc3c7">
+            <?php
+                if(isset($_GET['metodo'])) {
+                    echo '<h4>Código gerado: ' . $gerar->getCodigo() . '</h4>';
+                    echo '<h4>Pontos: ' . $gerar->getPontos() . '</h4>';
+                }
+            ?>
+            </div>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

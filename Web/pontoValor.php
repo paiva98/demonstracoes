@@ -7,7 +7,6 @@ if(!empty($_POST['valor'])) {
 
     $valor = (float)$_POST["valor"];
 
-    require_once "CodigoDePontos.php";
     $data = date("d/m/Y");
 
     $e = new Empresa("cvds", "sd", "sdc", $data, "vsdc", "csdcs", "csd", "cds");
